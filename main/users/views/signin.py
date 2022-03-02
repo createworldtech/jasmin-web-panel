@@ -44,4 +44,5 @@ def signin_view(request):
 
 def signout_view(request):
     logout(request)
-    return HttpResponseRedirect('/')
+    # NOTE: CANNOT use 'users:signin_view', 'next' will be empty
+    return HttpResponseRedirect(reverse('web:dashboard_view'))

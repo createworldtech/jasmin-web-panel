@@ -1,6 +1,7 @@
 """Django 3.0.5"""
 from __future__ import absolute_import, unicode_literals
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse_lazy
 import os, environ
 
 ROOT_DIR = environ.Path(__file__) - 3  # (/a/b/myfile.py - 3 = /)
@@ -91,7 +92,7 @@ AUTHENTICATION_BACKENDS = (
     'main.users.backends.UserModelBackend',
 )
 
-LOGIN_URL = "/account/login/"
+LOGIN_URL = reverse_lazy('users:signin_view')
 
 ADMIN_URL = env('ADMIN_URL', default="admin/")
 
