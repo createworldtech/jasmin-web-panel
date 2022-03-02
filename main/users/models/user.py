@@ -36,7 +36,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
 	is_active 	= models.BooleanField(_('Is Active'), default=False)
 	is_verified = models.BooleanField(_('Is Verified'), default=False)
 	is_email    = models.BooleanField(_('Is Email Verified'), default=False)
-	img 		= models.ImageField(verbose_name=_("Avatar"), upload_to=settings.DEFAULT_USER_FOLDER, blank=True, default=settings.DEFAULT_USER_AVATAR)
+	img 		= models.ImageField(verbose_name=_("Avatar"), upload_to=settings.DEFAULT_USER_FOLDER, blank=True, default=settings.STATIC_URL+settings.DEFAULT_USER_AVATAR)
 
 	address 	= models.TextField(verbose_name=_("Address"), blank=True,)
 	mob 		= models.CharField(verbose_name=_("Mobile"), max_length=15, blank=True, validators=[_PHONE_REGEX])
@@ -87,7 +87,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
 	def get_dict(self):
 		return {
 			"pk": self.pk,
-			"img": {"url": self.img.url, "name": self.img.name} if self.img else {"url": settings.DEFAULT_USER_AVATAR, "name": "user"},
+			"img": {"url": self.img.url, "name": self.img.name} if self.img else {"url": settings.STATIC_URL+settings.DEFAULT_USER_AVATAR, "name": "user"},
 			"username": self.username,
 			"firstname": self.first_name,
 			"lastname": self.last_name,

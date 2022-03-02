@@ -159,7 +159,7 @@ REDIS_URL = ('localhost', 6379) #env.str('REDIS_URL', default=('localhost', 6379
 #     },
 # }
 
-DEFAULT_USER_AVATAR = STATIC_URL + "assets/img/user.png"
+DEFAULT_USER_AVATAR = "assets/img/user.png"
 DEFAULT_USER_FOLDER = "users"
 LAST_ACTIVITY_INTERVAL_SECS = 3600
 

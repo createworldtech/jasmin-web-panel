@@ -87,7 +87,7 @@ def profile_view(request):
         elif s == "avatar_reset":
             try:
                 user = User.objects.get(pk=request.user.pk)
-                user.img = settings.DEFAULT_USER_AVATAR
+                user.img = settings.STATIC_URL + settings.DEFAULT_USER_AVATAR
                 user.save()
                 messages.success(request, _("OK, Your avatar profile has been reseted successfully"))
             except:
