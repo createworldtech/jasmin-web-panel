@@ -128,11 +128,7 @@ MESSAGE_TAGS = {
 
 STATIC_ROOT = str(ROOT_DIR('public/static'))
 
-# SCRIPT_NAME is appended only if STATIC_URL/MEDIA_URL is relative (e.g. does not beging with "http", "https", "/")
-# See: Fixed #25598 -- Added SCRIPT_NAME prefix to STATIC_URL and MEDIA_URL
-# https://github.com/django/django/commit/c574bec0929cd2527268c96a492d25223a9fd576
-# https://github.com/django/django/blob/main/django/conf/__init__.py#L137
-STATIC_URL = 'static/'
+STATIC_URL = env('STATIC_URL', default="static/")
 
 STATICFILES_DIRS = (str(APPS_DIR.path('static', )),)
 
@@ -143,7 +139,7 @@ STATICFILES_FINDERS = (
 
 MEDIA_ROOT = str(ROOT_DIR('public/media'))
 
-MEDIA_URL = 'media/'
+MEDIA_URL = env('MEDIA_URL', default="media/")
 
 REDIS_URL = ('localhost', 6379) #env.str('REDIS_URL', default=('localhost', 6379))
 
